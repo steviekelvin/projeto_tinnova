@@ -47,35 +47,15 @@ NODE_ENV=production
 VITE_URL_MOCK=https://private-9d65b3-tinnova.apiary-mock.com
 ```
 
-### 4. Instalar as Dependências
-
-#### Opção A: Dentro do Container Docker
-
-Utilize o Docker Compose para instalar as dependências dentro do container, garantindo que a instalação ocorra com a versão correta do Node:
-
-```bash
-docker-compose run --rm node npm install
-```
-
-#### Opção B: Localmente
-
-Caso prefira instalar localmente, execute:
-
-```bash
-npm install
-```
-
-> **Nota:** A pasta `node_modules` será criada na raiz do projeto.
-
-### 5. Levantar o Projeto
+### 4. Instalação de dependências e levante do Projeto
 
 Para iniciar a aplicação, execute:
 
 ```bash
-docker-compose up
+docker-compose up --build 
 ```
 
-O Docker Compose construirá e levantará os containers. Após a inicialização, a aplicação estará disponível em [http://localhost:3000](http://localhost:3000) *(verifique a porta definida no `docker-compose.yml` ou no `Dockerfile` se necessário)*.
+O Docker Compose construirá e levantará os containers, fazendo a instalação das dependências necessárias. Após a inicialização, a aplicação estará disponível em [http://localhost:3000](http://localhost:3000) *(verifique a porta definida no `APP_PORT` em seu .env se necessário)*.
 
 ---
 
@@ -123,5 +103,5 @@ Em caso de dúvidas, consulte a [documentação do Docker](https://docs.docker.c
 ---
 
 <div align="center">
-  <sub>Desenvolvido com 💜 por [Seu Nome]</sub>
+  <sub>Desenvolvido com 💜 por Stevie Kelvin </sub>
 </div>
