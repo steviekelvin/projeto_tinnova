@@ -2,6 +2,8 @@ import { ChangeEvent, useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import InputTextComponent from "../../components/InputTextComponent/InputTextComponent";
 import styles from "./HomePage.module.scss";
+import InputCpfComponent from "../../components/inputCpfComponent.tsx/InputCpfComponent";
+import InputTelComponent from "../../components/inputTelComponent/InputTelComponent";
 
 interface User {
   name: string;
@@ -57,6 +59,20 @@ const HomePage = () => {
     setIsModalOpen(true);
   };
 
+  const formatCPF = (cpf: string): string => {
+    return cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
+  };
+
+  const formatPhone = (phone: string): string => {
+    const cleaned = phone.replace(/\D/g, "");
+    if (cleaned.length === 11) {
+      return cleaned.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+    } else if (cleaned.length === 10) {
+      return cleaned.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+    }
+    return phone;
+  };
+
   const handleDelete = (index: number) => {
     const updatedData = data.filter((_, i) => i !== index);
     setData(updatedData);
@@ -110,8 +126,8 @@ const HomePage = () => {
             <span className={styles.list_item}>
               Nome: <strong>{item.name}</strong>
             </span>
-            <span className={styles.list_item}>CPF: {item.cpf}</span>
-            <span className={styles.list_item}>Telefone: {item.phone}</span>
+            <span className={styles.list_item}>CPF: {formatCPF(item.cpf)}</span>
+            <span className={styles.list_item}>Telefone: {formatPhone(item.phone)}</span>
             <span className={styles.list_item}>Email: {item.email}</span>
             <div className={styles.buttonGroup}>
               <button
@@ -149,7 +165,7 @@ const HomePage = () => {
                 name="name"
                 error={errors.name ? { message: errors.name } : undefined}
               />
-              <InputTextComponent
+              <InputCpfComponent
                 value={editData.cpf}
                 onChange={handleChange}
                 label="CPF"
@@ -157,7 +173,7 @@ const HomePage = () => {
                 name="cpf"
                 disabled
               />
-              <InputTextComponent
+              <InputTelComponent
                 value={editData.phone}
                 onChange={handleChange}
                 label="Telefone"

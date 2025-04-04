@@ -1,4 +1,4 @@
-@import "./../../styles/definitions.scss";
+@use "./../../styles/definitions.scss" as *;
 
 .container {
   margin-bottom: 1rem;

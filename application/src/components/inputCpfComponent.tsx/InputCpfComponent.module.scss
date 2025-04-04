@@ -1,5 +1,5 @@
-@import "./../../styles/definitions.scss";
-@import "./../../styles/root.scss";
+@use "./../../styles/definitions.scss" as *;
+@use "./../../styles/root.scss" as *;
 
 .inputWrapper {
   margin-bottom: 1rem;

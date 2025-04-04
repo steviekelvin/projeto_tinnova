@@ -66,6 +66,7 @@ const InputTelComponent: React.FC<InputTelComponentProps> = ({
         {...rest}
         id={id}
         type="tel"
+        maxLength='15'
         value={displayedValue}
         onChange={handleChange}
         className={classes.input}
