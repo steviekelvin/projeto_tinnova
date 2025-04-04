@@ -1,0 +1,29 @@
+@import "./../../styles/definitions.scss";
+@import "./../../styles/root.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+}
+
+.return_link {
+  font-weight: bold;
+  display: flex;
+  border-radius: 1rem;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  background-color: $button-background;
+  color: white;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+
+}

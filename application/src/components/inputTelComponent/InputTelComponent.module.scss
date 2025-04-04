@@ -1,0 +1,59 @@
+@import "./../../styles/definitions.scss";
+@import "./../../styles/root.scss";
+
+.inputWrapper {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: $label-color; // cor da fonte sem foco
+}
+
+.input {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  height: 3rem;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  background: transparent;
+
+  // Somente a borda de baixo
+  border: none;
+  border-bottom: 1px solid $border-color;
+  color: $label-color; // cor do texto sem foco
+
+  &:focus {
+    outline: none;
+    border-bottom-color: $label-color-focus; 
+    color: $label-color-focus; // cor do texto ao focar
+  }
+}
+
+// Quando há erro (input inválido)
+.inputError {
+  border-bottom-color: $border-input-invalid; // #eb4a46
+  color: $text-input-invalid;                 // #eb4a46
+}
+
+.error {
+  color: $text-input-invalid; // cor do texto de erro
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+// Responsividade
+@media (max-width: 600px) {
+  .label {
+    font-size: 14px;
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
