@@ -64,7 +64,6 @@ const CreatePage = () => {
   // 3. Validação de Telefone
   // Ex: exige no mínimo 10 dígitos (fixo) ou 11 (celular).
   const validatePhone = (value: string) => {
-    // Remove tudo que não for dígito
     const digits = value.replace(/\D/g, "");
     if (digits.length < 10) {
       setErrors((prev) => ({
@@ -113,9 +112,7 @@ const CreatePage = () => {
     }
   };
 
-  // Validação final ao submeter
   const handleSubmit = () => {
-    // Checagem final de nome
     if (user.name.trim().length < 3) {
       setErrors((prev) => ({
         ...prev,
@@ -149,7 +146,6 @@ const CreatePage = () => {
       return;
     }
 
-    // Se chegou até aqui, está tudo válido
     const storedData = getLocalStorage();
     const newData = [...storedData, user];
     setLocalStorage(newData);

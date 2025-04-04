@@ -14,7 +14,7 @@ interface InputTelComponentProps
  * - (XX) XXXXX-XXXX para 11 dígitos
  */
 const formatPhoneNumber = (inputValue: string) => {
-  const digits = inputValue.replace(/\D/g, ""); // Remove tudo que não é dígito
+  const digits = inputValue.replace(/\D/g, "");
   if (!digits) return "";
 
   // Telefones com DDD:
@@ -38,13 +38,11 @@ const InputTelComponent: React.FC<InputTelComponentProps> = ({
   onChange,
   ...rest
 }) => {
-  // Intercepta a digitação para enviar apenas dígitos ao componente pai
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const rawDigits = e.target.value.replace(/\D/g, "");
-    const fieldName = e.target.name; // caso o pai use "name"
+    const fieldName = e.target.name; 
 
     if (onChange) {
-      // Criamos um evento sintético substituindo apenas o "value"
       const syntheticEvent: ChangeEvent<HTMLInputElement> = {
         ...e,
         target: {
@@ -57,7 +55,6 @@ const InputTelComponent: React.FC<InputTelComponentProps> = ({
     }
   };
 
-  // Formata o valor que vai aparecer visualmente no input
   const displayedValue = formatPhoneNumber(String(rest.value || ""));
 
   return (
@@ -73,7 +70,6 @@ const InputTelComponent: React.FC<InputTelComponentProps> = ({
         onChange={handleChange}
         className={classes.input}
       />
-      {/* Mensagem de erro, se houver */}
       {error && <div className={classes.error}>{error.message}</div>}
     </div>
   );

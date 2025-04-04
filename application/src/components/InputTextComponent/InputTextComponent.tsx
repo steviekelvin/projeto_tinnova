@@ -17,9 +17,7 @@ const InputTextComponent: React.FC<InputTextComponentProps> = ({
   onChange,
   ...rest
 }) => {
-  // Interceptamos o "onChange" para chamar blur() após alterar o valor
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // Se houver um onChange vindo do pai, chamamos primeiro
     if (onChange) {
       onChange(e);
     }
@@ -35,7 +33,6 @@ const InputTextComponent: React.FC<InputTextComponentProps> = ({
         id={id}
         type="text"
         className={`${classes.input} ${error ? classes.invalid : ""}`}
-        // Em vez de passar "onChange={onChange}", passamos "handleChange"
         onChange={handleChange}
         {...rest}
       />

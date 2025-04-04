@@ -27,21 +27,17 @@ const InputCpfComponent: React.FC<InputCpfComponentProps> = ({
   onChange,
   ...rest
 }) => {
-  // Intercepta mudanças no input
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // Extrai apenas dígitos
     const digits = e.target.value.replace(/\D/g, "");
-    // Preserva também o `target.name`
     const fieldName = e.target.name;
 
     if (onChange) {
-      // Cria um evento sintético com o `value` "limpo" e o `name` preservado
       const syntheticEvent: ChangeEvent<HTMLInputElement> = {
         ...e,
         target: {
           ...e.target,
           value: digits,
-          name: fieldName, // fundamental para o pai saber qual campo atualizar
+          name: fieldName, 
         },
       };
       onChange(syntheticEvent);
@@ -57,7 +53,6 @@ const InputCpfComponent: React.FC<InputCpfComponentProps> = ({
         {...rest}
         type="text"
         id={id}
-        // Aqui formatamos para exibir com pontos/hífens:
         value={formatCpf(String(rest.value || ""))}
         onChange={handleChange}
         className={`${classes.input} ${error ? classes.inputError : ""}`}
